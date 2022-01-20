@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>Y-Face | Face Detection</title>
+
+
+<!-- Bootstrap core CSS -->
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300|Open+Sans:300" rel="stylesheet">
+<script defer src="https://www.ynov-lyon.com/app/uploads/2019/10/logo_ynov_campus_lyon.png"></script>
+<link href="static/css/theme.css" rel="stylesheet">
+
+</head>
+<body class="circular-theme--two">
+	
+<!-- 	header -->
+	<div class="header" id="header">
+		<nav class="navbar navbar-expand-lg navbar-transparent" id="navigation">
+			<a class="navbar-brand d-lg-none" href="#">
+		    <img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="">
+		  </a>
+      <button class="navbar-toggler order-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navicon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          </span>
+      </button>		
+
+			<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+				<a class="navbar-brand order-1 d-none d-lg-block" href="#">
+			    <img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="" width=70%>
+			  </a>
+				<ul class="navbar-nav order-2 justify-content-center">
+				  <li class="nav-item active">
+				    <a class="nav-link" href="#header">Accueil<span class="sr-only">(current)</span></a>
+				  </li>
+                  <li class="nav-item">
+				    <a class="nav-link" href="theory">Notre théorie</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#model">Notre modèle</a>
+				  </li>
+                  <li class="nav-item">
+				    <a class="nav-link" href="#reach-out">Notre site</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#showcase">Notre équipe</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="video_feed">Détection en temps réel (via Webcam)</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="image">Détection sur photo ou vidéo</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="https://gitlab.com/oumaimaB/detection-des-visages-dans-les-images">Notre code</a>
+				  </li>
+				</ul>
+				<div class="menu order-3 d-flex justify-content-end">
+					<a href="javascript:void(0)"><img class="img-fluid" src="static/img/2/menu.png"></a>
+				</div>
+			</div>
+		</nav>
+      
+    <div class="container">
+      <div class="header-text">
+        <h1>Y-Face</h1>
+        <p>Détectez vos visages sur vos photos et vidéos</p>
+      </div>
+			<div class="row header-btns">
+        <div class="col-xs-12 col-md-7 col-lg-4 offset-lg-2">
+            <a href="video_feed" style="color:#FFF;text-decoration:none">
+            <button class="btn btn-block btn-circular btn-blue">Allumez votre <br/> Webcam</button>
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-5 col-lg-4">
+            <a href="image" style="color:#FFF;text-decoration:none">
+            <button class="btn btn-block btn-circular btn-white-line">Téléchargez une photo <br/></button>
+            </a>
+        </div>
+			</div>
+		</div>
+	</div>
+		
+    <div class="skills" id="skills">
+        <!-- 		Overview -->
+        <div class="overview">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                        <h2>Détection de visage dans les images</h2>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <p class="description">
+                            Vous êtes sur le rendu final de notre projet Ydays de détection de visage dans les images. Découvrez notre équipe et explorez avec nous 
+                            les différentes étapes de conceptions, de la recherche théorique à la réalisations du site web en passant par l'entraînement du modèle.
+                        </p>
+                        <br/>
+                        <br/>
+                    </div>
+                        <div>
+                            <h2> Chronologie du projet </h2>
+                            <p style="font-family:sans-serif;font-size:15px;text-align:center;">
+                                <img class="img-fluid" src="../static/img/home/frise.png" width="80%">
+                            </p>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        
+            
+            <div style="background-color:rgba(255, 0, 115, 0.31);" class="overview">
+        <div class="container">
+            <h2>Choix des technologies et des données</h2>
+             	<p style="font-family:sans-serif;font-size:20px"> 
+					Il est clair que l'entrainement du modèle allait être la fondation permettant de construire notre application de détection faciale. <br/>
+					Nous allons ainsi vous détailler les étapes de ce processus.
+				</p>
+				<br/>
+				<h3>
+					1 - Les technologies utilisées :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Python :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Outil de référence pour la data science et notamment la computer vision (vision par ordinateur). 
+					Choisi car beaucoup de ressources déjà existantes dans le domaine.
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Torch :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Bibliothèque développée par Facebook plus simple à prendre en main que son seul concurrent majeur Tensorflow.​
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Colab :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Outil de Google permettant d'avoir des notebooks python avec entrainement par carte graphique gratuitement et facilement.​
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Yolov5 :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Modèle de détection d'objet très performant.​
+				</p>
+				<br/>
+				<h3>
+					2 - Le jeu de données :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px">
+					Nous avons fait le choix du jeu de donnée <a href="http://shuoyang1213.me/WIDERFACE/" target="_blank" style="color: white;"><u>WIDER FACE</u></a>,
+					composé de 38 203 images pour 393 703 visages annotés au total. ​
+					Le jeu de données précise les coordonnées exactes de chaque visage sous la forme d'une bounding box (un rectangle encadrant le visage) 
+					ainsi que des caractéristiques supplémentaires (que nous n'utiliserons pasdans ce projet) comme l'expression du visage, le maquillage 
+					ou l'illumination etc...
+				</p>
+				<div>
+					<img class="img-fluid" src="../static/img/training/wider_face.jpg" width="90%" height="90%">
+				</div>
+				<br/>
+
+        </div>
+    </div>
+    <div id="model">
+    <div style="background-color:rgba(0, 150, 173, 0.31)" class="overview">
+        <div class="container">
+            <h2>Notre démarche</h2>
+            	<h3>
+					1 - Prétraitement du jeu de données :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px">
+					Le jeu de données Wider Face que nous avions choisie était évidemment annoté pour la détection d'objet, mais il existe différent formattage de
+					label et celui-ci n'était pas compatible avec le script d'entraînement de yolov5. Ainsi, nous avons codé un script pour modifier le format
+					de tous les labels du dataset.
+				</p>
+				<br/>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Label original (un fichier contenant les labels pour chaque image) ayant pour format :​</u>
+				</p>
+				<div class="container-t">
+					<div class="flex-item">
+						<img class="img-fluid" src="../static/img/training/label_wider_face.png" width="90%">
+					</div>
+					<div class="flex-item">
+						<p style="font-family:sans-serif;font-size:15px;text-align:left;padding: 5px 0;">
+							- Path_de_l'image_1
+							<br/>
+							- Nombre de visage dans l'image​
+							<br/>
+							- Label visage 1 (coordonée de la bounding box en pixel + infos complémentaires)​
+							<br/>
+							- Label visage 2​
+							<br/>
+							- Etc...
+						</p>
+					</div>
+                    <p style="font-family:sans-serif;font-size:20px">
+					<u>Label compatible avec yolo (un fichier label par image) :​</u>
+				</p>
+				<div class="container-t">
+					<div class="flex-item">
+						<img class="img-fluid" src="../static/img/training/label_yolo.png" width="90%">
+					</div>
+					<div class="flex-item">
+						<p style="font-family:sans-serif;font-size:15px;text-align:left;padding: 5px 0;">
+							- Label visage 1 : classe (toujours 0) + coordonées de la bounding box en proportions de la taille de l'image
+							<br/>
+							- Label visage 2​
+							<br/>
+							- Etc...
+						</p>
+					</div>
+				</div>
+				<br/>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Aperçu du script :</u>
+				</p>
+				<div>
+					<img class="img-fluid" src="../static/img/training/read_label.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					On lit le fichier des labels et on le sépare en ligne.
+				</p>
+				<div>
+					<img class="img-fluid" src="../static/img/training/iterate_lines.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					On itère sur les lignes.
+				</p>
+				<div>
+					<img class="img-fluid" src="../static/img/training/extract_coor.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					Pour chaque label, on récupère les coordonnées (en pixel) de la bounding box correspondante
+					et on les transforme en proportions de la largeur et hauteur de l'image.​
+				</p>
+				<div>
+					<img class="img-fluid" src="../static/img/training/write_label.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					Enfin on écrit ces coordonées dans le fichier label de l'image correspondante.
+				</p>
+				<br/>
+				<h3>
+					2 - Difficulté sur le prétraitement :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px;">
+					Nous avons rencontré des difficultés à correctement modifier les labels, ne nous rendant compte qu'après l'entrainement du modèle des
+					problèmes de décalages des bounding box par rapport à l'emplacement réel des visages et entraînant une à deux séances de traquage du bug.
+				</p>
+				<div>
+					<img class="img-fluid" src="../static/img/training/label_decale.jpg" width="80%">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;text-align:center;">
+					<i>
+						Exemples de labels décalés
+					</i>
+				</p>
+				<div>
+					<img class="img-fluid" src="../static/img/training/label_correction.jpg" width="80%">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;text-align:center;">
+					<i>
+						Exemple de labels corrigés
+					</i>
+				</p>
+			</div>
+				<br/>
+            	<h3>
+					3 - Processus d'entraînement et de validation :
+				</h3>
+            
+             <p style="font-family:sans-serif;font-size:20px">- Récupérer le répertoire git de Yolo V5, installer les dépendences du répertoire ainsi que les dépendences requises pour notre application.</p>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/ntbk_0.png" width="80%"/></center> 
+            </div>
+            <br/>
+            <p style="font-family:sans-serif;font-size:20px">- Configurer le data.yaml : nous aurons besoin d'une seule classe (label) : 'face'.</p>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/ntbk_1.png" width="80%"/></center> 
+            </div>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/ntbk_2.png" width="80%"/></center> 
+            </div>
+            <br/>
+            <p style="font-family:sans-serif;font-size:20px">- Parmi les scripts de Yolo V5, le script train.py va permettre de lancer l'entraînement sur notre jeu de données avec le modèle Yolo V5 pré-configuré. Ici on montre les 4 premières et dernières époques d'entraînement (sur 100 epochs au total).</p>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/ntbk_3.png" width="80%"/></center> 
+            </div>
+            <br/>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/ntbk_4.png" width="80%"/></center> 
+            </div>
+            <br/>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/ntbk_5.png" width="80%"/></center> 
+            </div>
+            <br/>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/ntbk_6.png" width="80%"/></center> 
+            </div>
+            <br/>
+            <p style="font-family:sans-serif;font-size:20px">- Parmi les métriques calculées à l'issue de l'entraînement puis l'évaluation
+            sur le jeu test, on cite les loss sur la Box et l'Objectness, la précision et le recall, ainsi que la mAP, une métrique propre à Yolo.</p>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/results.png" width="80%"/></center> 
+            </div>
+            <br/>
+            <br/>
+            <h3>
+				4 - Inférence :
+			</h3>
+            
+            <br/>
+            <p style="font-family:sans-serif;font-size:20px">- Quelques résultats obtenus après inférence de notre modèle sur des images du jeu test de Wider Face :</p>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/inf_0.png" width="80%"/></center> 
+            </div>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/inf_1.png" width="80%"/></center> 
+            </div>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/inf_2.png" width="80%"/></center> 
+            </div>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/inf_3.png" width="80%"/></center> 
+            </div>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/inf_4.png" width="80%"/></center> 
+            </div>
+            <div>
+                <center><img class="img-fluid" src="static/img/notebook/inf_5.png" width="80%"/></center> 
+            </div>
+        </div>
+    </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+     
+    <div class="big-background">
+		<div class="container">	
+            <div class="showcase overview" id="reach-out">
+            <h2>Notre site Web : technologies et fonctionnement</h2>
+            	<h4>Technos et framework</h4>
+				<br/>
+				<dl class="row">
+				<dt class="col-sm-3"> FLASK </dt>
+				<dd  class="col-sm-9" >c'est un framework de développement web en python qui facilitent la création des applications web.</dd>
+				<dt class="col-sm-3"> Le format HTML </dt>
+				<dd class="col-sm-9"> (Hypertext Markup Language ) contient le contenu et la structure de la page web. Le navigateur charge les annexes 
+					(les fichiers CSS, JS, les images..). </dd>
+				<dt class="col-sm-3"> Le format CSS </dt>
+				<dd class="col-sm-9"> (Cascading style sheets) décrit la présentation du document HTML .  Le fichier CSS  gère les couleurs, police et le 
+					positionnement du contenu . </dd>
+				<dt class="col-sm-3"> Boostrap </dt>
+				<dd class="col-sm-9"> une collection d'outils utliliser pour ajouter un design et un style à l'application. Permet d'incorporer les pages web 
+					réactive dans l'application web.  </dd>
+				</dl>
+				<br/>
+				<h4>Backend</h4>
+				<dd>
+					Chaque page du site est configurée via Flask par une Route.
+				</dd>
+				<div>
+					<img class="img-fluid" src="../static/img/demo/flask_route.png">
+				</div>
+				<br/>
+				<h4>Frontend</h4>
+				<dd>
+					Voici un extrait du code HTML de cette page.
+				</dd>
+				<div>
+					<img class="img-fluid" src="../static/img/demo/html.png">
+				</div>
+				<br/>
+				<dd>
+					Les classes de balises comme "overview" ou "img-fluid" sont piochés dans la stylesheet boostrap.
+				</dd>
+				<div>
+					<img class="img-fluid" src="../static/img/demo/bootstrap.png">
+				</div>
+				<div class="align-content-around">
+					<br/>
+					<br/>
+					<h4> Demonstrateur</h4>
+					<dd  lass="col-sm-12 col-md-6"> Detection sur une image : cliquer <a href="image" style="color: white;">ICI</a></dd>
+					<dd lass="col-sm-12 col-md-6"> Detection via la webcam : cliquer <a href="video_feed" style="color: white;">ICI</a></dd>
+                </div>
+            </div>
+        </div>
+        	<div class="reach-out" id="reach-out">
+		<div class="container">
+			<div class="description">
+				<h2>Webcam et images</h2>
+				<br/>
+				<h4>Librairie</h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					Nous utilisons la librairie de traitement d'image open source OpenCV pour fournir
+					les images à notre modèle.
+				</p>
+				<br/>
+				<h4>Image</h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					Cette fonction permet d'upload une image via une requête POST, d'executer le modèle et d'afficher l'image avec la prédiction.
+				</p>
+				<div>
+					<img class="img-fluid" src="static/img/demo/flask_upload_image.png">
+				</div>
+				<br/>
+				<h4>Webcam</h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					Voici la classe permettant d'initialiser la webcam et d'envoyer chaque frame au modèle.
+				</p>
+				<div>
+					<img class="img-fluid" src="static/img/demo/code_camera.png">
+				</div>
+				<br/>
+				<br/>
+				<h4>Prediction </h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					La methode predict prend une frame, execute le modèle et affiche les bounding boxes prédites.
+				</p>
+				<div>
+					<img class="img-fluid" src="static/img/demo/code_predict.png">
+				</div>
+			</div>
+		</div>
+	</div>
+
+            <div class="big-background">
+            <!-- 		Our Team -->
+            <div class="showcase" id="showcase">
+                <div class="container">
+                    <div class="overview">
+                        <h2> Notre équipe </h2>
+                        <h5>Cinq étudiants en Master Data Scientist</h5>
+                        <p style="font-family:sans-serif;font-size:20px;">
+                            Nous sommes cinq passionnés de data science, que ce soit par le prisme ses statistiques, du traitement de données massives ou par
+                            les applications biologiques. Nous avons voulu à travers ce projet classique, mais ambitieux, développer et consolider nos compétences 
+                            dans le champs spécifique du Deep Learning et de ses applications.
+                        </p>
+                    </div>
+                    <div class="interests">
+                        <h6> Les membres :</h6>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 logo">
+                                
+                                <p style="font-family:sans-serif;font-size:15px;text-align:center;">
+                                    <img class="img-fluid" src="../static/img/home/man.png">
+                                    <br/>
+                                    Samuel WRIGHT
+                                </p>
+                            </div>
+                            <div class="col-sm-12 col-md-4 logo">
+                                <p style="font-family:sans-serif;font-size:15px;text-align:center;">
+                                    <img class="img-fluid" src="../static/img/home/woman.png">
+                                    <br/>
+                                    Oumaima BOUDCHICH
+                                </p>
+                            </div>
+                            <div class="col-sm-12 col-md-4 logo">
+                                <p style="font-family:sans-serif;font-size:15px;text-align:center;">
+                                    <img class="img-fluid" src="../static/img/home/woman.png">
+                                    <br/>
+                                    Balkis GOUIAA
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 logo">
+                                <p style="font-family:sans-serif;font-size:15px;text-align:center;">
+                                    <img class="img-fluid" src="../static/img/home/woman.png">
+                                    <br/>
+                                    Yasmine NAHAL
+                                </p>
+                            </div>
+                            <div class="col-sm-12 col-md-6 logo">
+                                <p style="font-family:sans-serif;font-size:15px;text-align:center;">
+                                    <img class="img-fluid" src="../static/img/home/man.png">
+                                    <br/>
+                                    Iliane SNOUSSI
+                                </p>
+                                <br/>
+                                <br/>
+                                <br/>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+            
+    </div>
+
+    <!-- 	footer -->
+<div class="footer">
+		<div class="container-fluid">
+			<div class="row">
+        <div class="col-sm-12 col-md-3 logo">
+              <img class="img-fluid" src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png" width=60%/>
+          </div>
+          <div class="col-sm-12 col-md-6 links">
+              <a href="#header" class="active">Accueil</a>
+              <a href="theory">Notre théorie</a>
+              <a href="#model">Notre modèle</a>
+              <a href="#reach-out">Notre site</a>
+              <a href="#showcase">Notre équipe</a>
+              <a href="theory">Théorie</a>
+              <a href="video_feed">Détection Cam</a>
+              <a href="image">Détection Photo</a>
+              <a href="https://gitlab.com/oumaimaB/detection-des-visages-dans-les-images">Code</a>
+          </div>
+          <div class="col-sm-12 col-md-3 social">
+              <a href="javascript:void(0)">
+                  <img class="img-fluid" src="static/img/2/facebook_logo.png">
+              </a>
+              <a href="javascript:void(0)">
+                  <img class="img-fluid" src="static/img/2/twitter_logo.png">
+              </a>
+              <a href="javascript:void(0)">
+                  <img class="img-fluid" src="static/img/2/instagram_logo.png">
+              </a>
+          </div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 offset-md-4 copyright">
+					© Copyright <script></script>, Ynov Theme. All rights are reserved.
+				</div>
+			</div>
+		</div>
+	</div>		
+		
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>Y-Face | Uploads</title>
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300|Open+Sans:300" rel="stylesheet">
+<script defer src="https://www.ynov-lyon.com/app/uploads/2019/10/logo_ynov_campus_lyon.png"></script>
+<link href="static/css/theme.css" rel="stylesheet">
+</head>
+
+<body style="padding:20%;background-image:url('static/img/2/header_background.png')">
+		<div class="overview" style="">
+            <h2>Choisissez une photo et passez-la à notre modèle !</h2>
+            <p>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </p>
+            {% if filename %}
+            <div>
+                <img src="{{ url_for('display_image', filename=filename) }}">
+            </div>
+            {% endif %}
+            {% if image %}
+            <div>
+                <img src="{{ image }}">
+            </div>
+            {% endif %}
+            <form method="post" action="/image" enctype="multipart/form-data">
+                <dl>
+                    <p>
+                        <input type="file" name="file" autocomplete="off" required>
+                    </p>
+                </dl>
+                <p>
+                    <input type="submit" value="Submit">
+                </p>
+            </form>
+    </div>
+    <div>
+        <p><a href="home">Retour à l'accueil </a></p>
+    </div>
+		
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>

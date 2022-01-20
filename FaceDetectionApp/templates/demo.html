@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>YDAYS | Face Detection App</title>
+
+
+<!-- Bootstrap core CSS -->
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300|Open+Sans:300" rel="stylesheet">
+<link href="static/css/theme.css" rel="stylesheet">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</head>
+<body class="circular-theme--two">
+	
+<!-- 	header -->
+	<div class="header" id="header">
+		<nav class="navbar navbar-expand-lg navbar-transparent" id="navigation">
+			<a class="navbar-brand d-lg-none" href="#">
+			<img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="">
+			</a>
+		<button class="navbar-toggler order-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navicon">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+			</span>
+		</button>	
+
+			<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+				<a class="navbar-brand order-1 d-none d-lg-block" href="#">
+				<img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="">
+				</a>
+				<ul class="navbar-nav order-2 justify-content-center">
+					<li class="nav-item">
+					<a class="nav-link" href="home">Home</a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link" href="theory">Théorie</a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link" href="training">Entrainement</a>
+					</li>
+					<li class="nav-item active">
+					<a class="nav-link" href="demo">Démonstrateur <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link" href="video_feed">Webcam Detection</a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link" href="image">Image Detection </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://gitlab.com/oumaimaB/detection-des-visages-dans-les-images" target="_blank">Gitlab</a>
+					</li>
+				</ul>
+				<div class="menu order-3 d-flex justify-content-end">
+					<a href="javascript:void(0)"><img class="img-fluid" src="./img/2/menu.png"></a>
+				</div>
+			</div>
+		</nav>
+		<!-- style = "background-color:#aba2ff"	AJOUTER DU CODE ICI -->
+	</div>
+
+	<!-- Overview -->
+	<div class="reach-out" id="reach-out">
+		<div class="container">	
+			<div class="description">
+				<h2>Fonctionnement général du site</h2>
+				<h4>Technos et framework</h4>
+				<br/>
+				<dl class="row">
+				<dt class="col-sm-3"> FLASK </dt>
+				<dd  class="col-sm-9" >c'est un framework de développement web en python qui facilitent la création des applications web.</dd>
+				<dt class="col-sm-3"> Le format HTML </dt>
+				<dd class="col-sm-9"> (Hypertext Markup Language ) contient le contenu et la structure de la page web. Le navigateur charge les annexes 
+					(les fichiers CSS, JS, les images..). </dd>
+				<dt class="col-sm-3"> Le format CSS </dt>
+				<dd class="col-sm-9"> (Cascading style sheets) décrit la présentation du document HTML .  Le fichier CSS  gère les couleurs, police et le 
+					positionnement du contenu . </dd>
+				<dt class="col-sm-3"> Boostrap </dt>
+				<dd class="col-sm-9"> une collection d'outils utliliser pour ajouter un design et un style à l'application. Permet d'incorporer les pages web 
+					réactive dans l'application web.  </dd>
+				</dl>
+				<br/>
+				<h4>Backend</h4>
+				<dd>
+					Chaque page du site est configurée via Flask par une Route.
+				</dd>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/demo/flask_route.png">
+				</div>
+				<br/>
+				<h4>Frontend</h4>
+				<dd>
+					Voici un extrait du code HTML de cette page.
+				</dd>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/demo/html.png">
+				</div>
+				<br/>
+				<dd>
+					Les classes de balises comme "overview" ou "img-fluid" sont piochés dans la stylesheet boostrap.
+				</dd>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/demo/bootstrap.png">
+				</div>
+				<div class="align-content-around">
+					<br/>
+					<br/>
+					<h4> Demonstrateur</h4>
+					<dd  lass="col-sm-12 col-md-6"> Detection sur une image : cliquer <a href="image" style="color:black;">ICI</a></dd>
+					<dd lass="col-sm-12 col-md-6"> Detection via la webcam : cliquer <a href="video_feed" style="color:black;">ICI</a></dd>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--- Code Oumaima ----------------------------------------------------------------------------------------------------------------------------------------->
+	<!---Please modify the path of the images ----->
+	<div class="reach-out" id="reach-out">
+		<div class="container">
+			<div class="description">
+				<h2>Webcam et images</h2>
+				<br/>
+				<h4>Librairie</h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					Nous utilisons la librairie de traitement d'image open source OpenCV pour fournir
+					les images à notre modèle.
+				</p>
+				<br/>
+				<h4>Image</h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					Cette fonction permet d'upload une image via une requête POST, d'executer le modèle et d'afficher l'image avec la prédiction.
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/demo/flask_upload_image.png">
+				</div>
+				<br/>
+				<h4>Webcam</h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					Voici la classe permettant d'initialiser la webcam et d'envoyer chaque frame au modèle.
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/demo/code_camera.png">
+				</div>
+				<br/>
+				<br/>
+				<h4>Prediction </h4>
+				<p style="font-family:sans-serif;font-size:20px">
+					La methode predict prend une frame, execute le modèle et affiche les bounding boxes prédites.
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/demo/code_predict.png">
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- 	footer -->
+	<div class="footer">
+		<div class="container-fluid">
+			<div class="row">
+        <div class="col-sm-12 col-md-3 logo">
+              <img class="img-fluid" src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png" />
+          </div>
+          <div class="col-sm-12 col-md-9 links">
+              <a href="" class="active">Home</a>
+              <a href="theory">Théorie</a>
+              <a href="training">Entrainement</a>
+              <a href="demo">Démonstrateur</a>
+              <a href="video_feed">Webcam Detection</a>
+              <a href="image">Image Detection</a>
+          </div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 offset-md-4 copyright">
+					© Copyright <script></script>, Ynov Theme. All rights are reserved.
+				</div>
+			</div>
+		</div>
+	</div>	
+		
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>

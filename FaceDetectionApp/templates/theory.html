@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>YDAYS | Face Detection App</title>
+
+
+<!-- Bootstrap core CSS -->
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300|Open+Sans:300" rel="stylesheet">
+<script defer src="https://www.ynov-lyon.com/app/uploads/2019/10/logo_ynov_campus_lyon.png"></script>
+<link href="static/css/theme.css" rel="stylesheet">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<style>
+	.imgbox {
+		display: grid;
+		height: 100%;
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+	.center-fit {
+		max-width: 100%;
+		max-height: 50vh;
+		margin: auto;
+	}
+
+	.container-t {
+    	display:flex;
+	}
+	.flex-item {
+		flex-grow: 1;
+	}
+</style>
+
+</head>
+  <body class="circular-theme--two">
+	
+<!-- 	header -->
+	<div class="header" id="header">
+		<nav class="navbar navbar-expand-lg navbar-transparent" id="navigation">
+			<a class="navbar-brand d-lg-none" href="#">
+		    <img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="">
+		  </a>
+      <button class="navbar-toggler order-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navicon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          </span>
+      </button>		
+
+			<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+				<a class="navbar-brand order-1 d-none d-lg-block" href="#">
+			    <img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="" width=70%>
+			  </a>
+				<ul class="navbar-nav order-2 justify-content-center">
+				  <li class="nav-item active">
+				    <a class="nav-link" href="home">Accueil<span class="sr-only">(current)</span></a>
+				  </li>
+                  <li class="nav-item">
+				    <a class="nav-link" href="theory">Notre théorie</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="home">Notre modèle</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="home">Notre équipe</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="video_feed">Détection en temps réel (via Webcam)</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="image">Détection sur photo ou vidéo</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="https://gitlab.com/oumaimaB/detection-des-visages-dans-les-images">Notre code</a>
+				  </li>
+				</ul>
+				<div class="menu order-3 d-flex justify-content-end">
+					<a href="javascript:void(0)"><img class="img-fluid" src="static/img/2/menu.png"></a>
+				</div>
+			</div>
+		</nav>
+        <!-- style = "background-color:#aba2ff"	AJOUTER DU CODE ICI -->
+        
+	</div>
+	<div>
+	<div style="margin-left: 20%; margin-right: 20%;">
+		<br/>
+		<h1 style="color:black">
+			Compte-rendu de nos recherches théoriques sur les sujets de Deep Learning en Computer Vision
+		</h1>
+		<p style="color:black"> 
+			Dans le cadre de ce projet autant académique que professionnel, il nous est apparu important de privilégier la monté en compétence de chacun.
+			Pour cela, nous avons passé plusieurs séances à acquérir des connaissances théoriques ainsi que des compétences pratiques sur les sujets de Deep
+			Learning et de computer vision.​ Si nos acquisition pratiques sont déjà démontrés par le projet en lui-même, il nous est toutefois apparu intéressant
+			de faire un compte-rendu de notre recherche théorique sur ces sujets.​ Ainsi donc, voici un compte-rendu de nos recherches théoriques sur le sujet. 
+		</p>
+		<br/>
+		<br/>
+		<h3 style="color:black">
+			1.1 Représentation commune d’un réseau de neurones​ :​
+		</h3>
+		<p style="color:black"> 
+			Chaque point est un neurone. 
+			Chaque neurone est connecté à tous les neurones de la couche précédente et suivante. 
+			Ce type de réseau est communément appelé feed forward
+			car l’information ne se déplace que dans une direction, de l’entrée vers la sortie.
+		</p>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/fully_connected.png">
+		</div>
+		<br/>
+		<h3 style="color:black">
+			1.2 Fonctionnement d’un neurone​ individuel :​
+		</h3>
+		<div class="container-t">
+			<div class="flex-item">
+				<div class="imgbox">
+					<img class="center-fit" src="../static/img/theory/neuron.png">
+				</div>
+			</div>
+			<div class="flex-item">
+				<br/>
+				<br/>
+				<p style="color:black">
+					<b>X1, X2, …, Xn :</b>
+					Valeurs des neurones de la couche précédente.
+				</p>
+				<p style="color:black">
+					<b>W1, W2, …, Wn :</b>
+					Valeurs des poids de la connexion entre deux neurones (paramètre entrainable).
+				</p>
+				<p style="color:black">
+					<b>B :</b>
+					Biais du neurone (paramètre entrainable et optionnel).​
+				</p>
+				<p style="color:black">
+					<b>f :</b>
+					Fonction d’activation du neurone.​
+				</p>
+			</div>
+		</div>
+		<br/>
+		<h3 style="color:black">
+			1.3 Fonctionnement globale d’un réseau de neurone :​
+		</h3>
+		<p style="color:black"> 
+			Les réseaux de neurones les plus basiques, 
+			que l'on désigne généralement par le terme de "fully connected",
+			sont constitués d'une succession de couches de neurones.
+		</p>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/more_neurons.png">
+		</div>
+		<ul style="color:black">
+			<li>
+				Les couches peuvent être de longueur différentes.
+			​</li>
+			<li>
+				Entre deux couches de longueurs n et m respectivement, 
+				on a donc une matrice de <b>n*m</b> poids (un pour chaque paire de neurone).​
+			</li>
+			<li>
+				La couche d’entrée reçoit ses valeurs directement des données 
+				(sans poids, biais ou fonction d’activation). 
+				Sa longueur (fixe) dépend du format des données en entrée.
+			​</li>
+			<li>
+				La couche de sortie fonctionne comme les couches internes. 
+				Sa longueur (fixe) et sa fonction d’activation dépend du format des labels. 
+			​</li>
+		</ul>
+		<br/>
+		<h3 style="color:black">
+			2.1 Métriques et fonctions de perte​ :
+		</h3>
+		<p style="color:black">
+			Les métriques et les fonctions de perte (loss function) permettent d’évaluer
+			(c'est-à-dire associer un score à) une prédiction (ou série de prédictionq) par rapport aux valeurs réelles.
+			Les fonctions de perte serviront lors de l’entraînement, tandis que les métriques seront calculées 
+			sur un jeu de validation et/ou de test et destinées à être interprétées par un humain.
+			Plus le score d’une fonction de perte est bas, plus la prédiction est considéré comme bonne. 
+			Ainsi, le but d’un entraînement va être de minimiser la fonction de perte.
+			Voici deux exemples pouvant servir de base pour une fonction de perte
+		</p>
+		<p style="color:black">
+			<u>Mean Square Error (MSE) :</u>
+			$$\dfrac{1}{n}\sum\limits_{i = 1}^n{(Y_i-\widetilde{Y}_i)^2}$$
+			Dans le cas d’une régression (c’est-à-dire la prédiction d’une valeur réelle unique), 
+			on utilise souvent cette fonction de perte, qui correspond à la moyenne des erreurs au carré
+			Avec n le nombre de prédictions, Yi les valeurs réelles et Ŷi les valeurs prédites.
+		</p>
+		<p style="color:black">
+			<u>Binary Cross Entropy (BCE) ou Log Loss​ :</u>
+			$$H_p(q) = -\dfrac{1}{N}\sum\limits_{i = 1}^N{y_i*log(p(y_i))+(1-y_i)*log(1-p(y_i))}$$
+			Dans le cas d’une classification avec deux classes (c’est-à-dire la prédiction d’une probabilité 
+			d’appartenance à une classe), on utilise souvent cette fonction de perte.​
+			La formule peut paraître complexe, mais cette fonction consiste simplement à faire la moyenne des log
+			de l'erreur entre la probabilité prédite par le modèle et la classe réelle.
+			Par exemple, pour un classifieur reconnaissant des images de chats :​
+		</p>
+		<ul style="color:black">
+			<li>
+				Si le modèle donne une probabilité de 0.7 sur une image ou il y a un chat, la perte sera de - log(0.7) = 0.155​
+			</li>
+			<li>
+				Tandis que si le modèle donne une probabilité de 0.7 sur une image ou il n’y a pas de chat, la perte sera de - log(1 - 0.7) = 0.523​
+			</li>
+		</ul>
+		<p style="color:black">
+			Ainsi, on a bien une perte plus importante lorsque le modèle se trompe.​
+		</p>
+		<br/>
+		<h3 style="color:black">
+			2.2 Objectif de l’entraînement​​ :
+		</h3>
+		<p style="color:black">
+			Pour simplifier, un réseau de neurone peut être vu comme une boîte avec plein de boutons
+			à tourner. Ce sont les paramètres (poids, biais, etc…). 
+			L’objectif de l’entraînement va être de trouver un ensemble de valeurs pour ces 
+			paramètres qui donnent des prédictions les plus satisfaisante possible. 
+			Pour cela, on utilise deux algorithmes : la descente de gradient et la backpropagation.​
+		</p>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/tweek_buttons.png" height="90%">
+		</div>
+		<br/>
+		<h3 style="color:black">
+			2.3 La descente de gradient​​​ :
+		</h3>
+		<p style="color:black">
+			L’algorithme de la descente de gradient permet de trouver la valeur minimale d’une fonction.
+			Pour simplifier, on va expliquer la descente de gradient pour une fonction à une seule variable.
+			
+		</p>
+		<p style="color:black">
+			<u>Prérequis :</u>
+		</p>
+		<ul style="color:black">
+			<li>
+				Une fonction f(W) = perte, que l’on va vouloir minimiser, qui doit être dérivable 
+				(en pratique, on peut tout dériver informatiquement, mais on veut tout de même que la 
+				fonction soit rapidement dérivable).​
+			</li>
+			<li>
+				Une valeur initiale W1.
+			</li>
+			<li>
+				Un learning rate l.
+			</li>
+		</ul>
+		<p style="color:black">
+			<u>L'algorithme de la descente de gradient :</u>
+		</p>
+		<ol style="color:black">
+			<li>
+				​On calcul f’(Wi) la dérivé de f au point Wi (qui correspond au coefficient directeur 
+				de la tangente de f en Wi). On nomme également cette valeur le gradient de f en Wi.
+			</li>
+			<li>
+				On calcul la nouvelle valeur du paramètre Wi+1 = Wi - l * f’(Wi)
+			</li>
+			<li>
+				On répète ces deux points jusqu’à ce qu’on rencontre la condition d'arrêt (un certain 
+				nombre d’étape ou un gradient très faible).
+			</li>
+		</ol>
+		<p style="color:black">
+			Voici une animation pour comprendre l'algorithme de la descente de gradient :
+		</p>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/gradient_descent.gif">
+		</div>
+		<br/>
+		<p style="color:black">
+			Pour une fonction à plusieurs variable, on calcule les dérivées partielles par rapport 
+			à chacune des variables.​
+		</p>
+		<p style="color:black">
+			<span style="color:red">ATTENTION :</span> Les variables de la fonction de perte sont les
+			poids du réseau de neurone, ce sont donc les paramètres du modèles !
+		</p>
+		<br/>
+		<h3 style="color:black">
+			2.4 L'algorithme de la rétropropagation :
+		</h3>
+		<p style="color:black">
+			Pour appliquer la descente de gradient aux réseaux de neurones, on utilise la rétropropagation.
+			C’est une façon astucieuse de calculer les gradients de tous les paramètres du modèle.​ En voici donc les différentes étapes :
+		</p>
+		<ul style="color:black">
+			<li>
+				​En comparant l’activation du neurone de sortie à la donnée réelle, on détermine une 
+				'urgence' à modifier celle-ci.
+			</li>
+			<li>
+				Selon l’activation des neurones de la couche précédente, on détermine une ‘urgence’ à modifier les poids qui leur sont associé.
+			</li>
+			<li>
+				On répète ces deux dernières étapes en propageant l’information vers l’arrière du réseau.
+			</li>
+		</ul>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/backprop.gif" height="90%">
+		</div>
+		<br/>
+		<h3 style="color:black">
+			3.1 Le problème de la dimension :
+		</h3>
+		<p style="color:black">
+			On a vu dans l’explication du fonctionnement générale d’un réseau de neurone fully connected
+			qu’entre deux couches de longueurs respective n et m il y avait n*m poids.
+			Comme chaque poids entraîne un calcul supplémentaire, la longueur influe sur le temps 
+			de prédiction du modèle. Hors, certaines structures de données, comme les images, 
+			génèrent des couches d’entrée extrêmement grande.​
+		</p>
+		<br/>
+		<div class="container-t">
+			<div class="flex-item">
+				<p style="color:black; text-align:center">
+					<i>Représentation matricielle d’une image en niveau de gris.​</i>
+				</p>
+			</div>
+			<div class="flex-item">
+				<p style="color:black; text-align:center" class="center-fit">
+					<i>Représentation matricielle d’une image RGB.​​</i>
+				</p>
+			</div>
+		</div>
+		<div class="container-t">
+			<div class="flex-item">
+				<div class="imgbox">
+					<img class="center-fit" src="../static/img/theory/image_matrix.jpg">
+				</div>
+			</div>
+			<div class="flex-item">
+				<div class="imgbox">
+					<img class="center-fit" src="../static/img/theory/image_matrix_color.jpg">
+				</div>
+			</div>
+		</div>
+		<br/>
+		<h3 style="color:black">
+			3.2 L'opération de convolution :
+		</h3>
+		<p style="color:black">
+			La convolution est une opération sur les images qui ne répond pas directement au problème
+			de la dimension. Elle ne va pas tant réduire la dimension de l’image que faire ressortir
+			une partie de l’information contenu dans l’image.
+		</p>
+		<p style="color:black">
+			La couche de convolution consiste à appliquer plusieurs filtre (comprendre matrice de
+			convolution) à l’image d’entrée. Ainsi, la longueur de la couche ne diminue pas réellement,
+			voir augmente. On peut par exemple passer d’une couche de taille 1280*720*3 à 1280*720*16
+			correspondant à 16 filtres de la même image. Voici une animation permettant de comprendre
+			le fonctionnement ainsi que l'utilité de l'opération de convolution :
+		</p>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/convolution.gif">
+			<p style="color:black; text-align:center" class="center-fit">
+				<i>Source de l'animation : https://setosa.io/ev/image-kernels/​​</i>
+			</p>
+		</div>
+		<br/>
+		<p style="color:black">
+			La convolution ne peut traiter les bordures de l’image. Il existe plusieurs moyen de traiter ce
+			problème : supprimer purement les bordures ou ajouter du padding (mettre la bordure en noir,
+			refleter les pixels voisins, etc…).
+		</p>
+		<p style="color:black">
+			Les coefficients de ces filtres de convolution sont entraînables, car il est important
+			d’avoir des filtres adaptés aux données d’entrées.
+		</p>
+		<br/>
+		<h3 style="color:black">
+			3.3 Opération de pooling :
+		</h3>
+		<p style="color:black">
+			L’opération de pooling est celle qui va diminuer la dimension de l’image dans les blocs de
+			convolution. Elle consiste à agréger des groupes de pixels (souvent 2*2). Dans le cas du
+			max pooling, l'opération de pooling la plus utilisé, on prend la valeur maximum.
+		</p>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/pooling.jpg" height="90%">
+		</div>
+		<br/>
+		<h3 style="color:black">
+			3.4 Architecture d'un CNN :
+		</h3>
+		<p style="color:black">
+			Voici deux représentations de l’architecture d’un CNN connu, le VGG-16 (un classifieur
+			capable de reconnaître 1000 classes). En pratique, il est courant de prendre le modèle
+			pré-entraîné sur une énorme base de donnée et de n'entraîner que les dernière couches
+			sur un jeu de données spécifique.​
+		</p>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/vgg16_1.png" height="90%">
+		</div>
+		<br/>
+		<div class="imgbox">
+			<img class="center-fit" src="../static/img/theory/vgg16_2.png" height="90%">
+		</div>
+		<br/>
+		<h3 style="color:black">
+			3.5 Détection d'objet :
+		</h3>
+		<p style="color:black">
+			Les modèles de détection d’objet sont basés sur des architectures semblables aux simples
+			classifieurs CNN, mais ont des formats de sorties plus élaborés. Pour faire simple,
+			l’image fourni en entrée est divisé en une grille beaucoup plus petite, et chaque carré de
+			la grille (qui englobe donc plusieurs pixels) propose une bounding box (un rectangle
+			englobant un objet dans l’image) sous la forme de quatre coordonnée ainsi qu’une classe
+			pour cet objet. De ce fait, les modèles de détection d’objet performent dans le même temps
+			des classifications et régressions. Voici deux représentations schématiques du fonctionnement
+			du modèle YOLO :
+		</p>
+		<div class="container-t">
+			<div class="flex-item">
+				<div class="imgbox">
+					<img class="center-fit" src="../static/img/theory/yolo1.jpg">
+				</div>
+			</div>
+			<div class="flex-item">
+				<div class="imgbox">
+					<img class="center-fit" src="../static/img/theory/yolo2.png">
+				</div>
+			</div>
+		</div>
+		<br/>
+	</div>
+	</div>
+    
+
+
+    <!-- 	footer -->
+	<div class="footer">
+		<div class="container-fluid">
+			<div class="row">
+        <div class="col-sm-12 col-md-3 logo">
+              <img class="img-fluid" src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png" />
+          </div>
+          <div class="col-sm-12 col-md-9 links">
+              <a href="" class="active">Home</a>
+              <a href="theory">Théorie</a>
+              <a href="training">Entrainement</a>
+              <a href="demo">Démonstrateur</a>
+              <a href="video_feed">Webcam Detection</a>
+              <a href="image">Image Detection</a>
+          </div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 offset-md-4 copyright">
+					© Copyright <script></script>, Ynov Theme. All rights are reserved.
+				</div>
+			</div>
+		</div>
+	</div>	
+		
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>

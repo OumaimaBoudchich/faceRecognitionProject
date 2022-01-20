@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>YDAYS | Face Detection App</title>
+
+
+<!-- Bootstrap core CSS -->
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300|Open+Sans:300" rel="stylesheet">
+<script defer src="https://www.ynov-lyon.com/app/uploads/2019/10/logo_ynov_campus_lyon.png"></script>
+<link href="static/css/theme.css" rel="stylesheet">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<style>
+	.container-t {
+    	display:flex;
+		justify-content: center;
+  		align-items: center;
+	}
+	.flex-item {
+		flex-grow: 1;
+	}
+</style>
+
+</head>
+  <body class="circular-theme--two">
+	
+<!-- 	header -->
+	<div class="header" id="header">
+		<nav class="navbar navbar-expand-lg navbar-transparent" id="navigation">
+			<a class="navbar-brand d-lg-none" href="#">
+		    <img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="">
+		  </a>
+      <button class="navbar-toggler order-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navicon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          </span>
+      </button>	
+
+			<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+				<a class="navbar-brand order-1 d-none d-lg-block" href="#">
+			    <img src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png"  class="d-inline-block align-top" alt="">
+			  </a>
+				<ul class="navbar-nav order-2 justify-content-center">
+				  <li class="nav-item">
+				    <a class="nav-link" href="home">Home</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="theory">Théorie</a>
+				  </li>
+				  <li class="nav-item active">
+				    <a class="nav-link" href="training">Entrainement <span class="sr-only">(current)</span></a>
+				  </li>
+                  <li class="nav-item">
+				    <a class="nav-link" href="demo">Démonstrateur</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="video_feed">Webcam Detection</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="image">Image Detection </a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="https://gitlab.com/oumaimaB/detection-des-visages-dans-les-images" target="_blank">Gitlab</a>
+				  </li>
+				</ul>
+				<div class="menu order-3 d-flex justify-content-end">
+					<a href="javascript:void(0)"><img class="img-fluid" src="./img/2/menu.png"></a>
+				</div>
+			</div>
+		</nav>
+        <!-- style = "background-color:#aba2ff"	AJOUTER DU CODE ICI -->
+        
+	</div>
+
+	<div class="reach-out" id="reach-out">
+		<div class="container">
+			<div class="description">
+				<h1>
+					L'entrainement
+				</h1>
+				<p style="font-family:sans-serif;font-size:20px"> 
+					Il est clair que l'entrainement du modèle allait être la fondation permettant de construire notre application de détection faciale. <br/>
+					Nous allons ainsi vous détailler les étapes de ce processus.
+				</p>
+				<br/>
+				<h3>
+					1 - Les technologies utilisées​ :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Python :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Outil de référence pour la data science et notamment la computer vision (vision par ordinateur). 
+					Choisi car beaucoup de ressources déjà existantes dans le domaine.
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Torch :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Bibliothèque développée par Facebook plus simple à prendre en main que son seul concurrent majeur Tensorflow.​
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Colab :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Outil de Google permettant d'avoir des notebooks python avec entrainement par carte graphique gratuitement et facilement.​
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Yolov5 :</u>
+				</p>
+				<p style="font-family:sans-serif;font-size:20px">
+					Modèle de détection d'objet très performant.​
+				</p>
+				<br/>
+				<h3>
+					2 - Le jeu de données​ :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px">
+					Nous avons fait le choix du jeu de donnée <a href="http://shuoyang1213.me/WIDERFACE/" target="_blank" style="color: white;"><u>WIDER FACE</u></a>,
+					composé de 38 203 images pour 393 703 visages annotés au total. ​
+					Le jeu de données précise les coordonnées exactes de chaque visage sous la forme d'une bounding box (un rectangle encadrant le visage) 
+					ainsi que des caractéristiques supplémentaires (que nous n'utiliserons pasdans ce projet) comme l'expression du visage, le maquillage 
+					ou l'illumination etc...
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/training/wider_face.jpg" width="90%" height="90%">
+				</div>
+				<br/>
+				<h3>
+					3 - Prétraitement du jeu de données​ :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px">
+					Le jeu de donnée wider face que nous avions choisie était évidemment annoté pour la détection d'objet, mais il existe différent formattage de
+					label et celui-ci n'était pas compatible avec le script d'entraînement de yolov5. Ainsi, nous avons codé un script pour modifier le format
+					de tous les labels du dataset.
+				</p>
+				<br/>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Label original (un fichier contenant les labels pour chaque image) ayant pour format :​</u>
+				</p>
+				<div class="container-t">
+					<div class="flex-item">
+						<img class="img-fluid" src="../static/img/training/label_wider_face.png" width="90%">
+					</div>
+					<div class="flex-item">
+						<p style="font-family:sans-serif;font-size:15px;text-align:left;padding: 5px 0;">
+							- Path_de_l'image_1
+							<br/>
+							- Nombre de visage dans l'image​
+							<br/>
+							- Label visage 1 (coordonée de la bounding box en pixel + infos complémentaires)​
+							<br/>
+							- Label visage 2​
+							<br/>
+							- Etc...
+						</p>
+					</div>
+				</div>
+				<br/>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Label compatible avec yolo (un fichier label par image) :​</u>
+				</p>
+				<div class="container-t">
+					<div class="flex-item">
+						<img class="img-fluid" src="../static/img/training/label_yolo.png" width="90%">
+					</div>
+					<div class="flex-item">
+						<p style="font-family:sans-serif;font-size:15px;text-align:left;padding: 5px 0;">
+							- Label visage 1 : classe (toujours 0) + coordonées de la bounding box en proportions de la taille de l'image
+							<br/>
+							- Label visage 2​
+							<br/>
+							- Etc...
+						</p>
+					</div>
+				</div>
+				<br/>
+				<p style="font-family:sans-serif;font-size:20px">
+					<u>Aperçu du script :​</u>
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/training/read_label.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					On lit le fichier des labels et on le sépare en ligne.
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/training/iterate_lines.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					On itère sur les lignes.
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/training/extract_coor.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					Pour chaque label, on récupère les coordonnées (en pixel) de la bounding box correspondante
+					et on les transforme en proportions de la largeur et hauteur de l'image.​
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/training/write_label.png">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;">
+					Enfin on écrit ces coordonées dans le fichier label de l'image correspondante.
+				</p>
+				<br/>
+				<h3>
+					4 - Difficulté sur le prétraitement​ :
+				</h3>
+				<p style="font-family:sans-serif;font-size:20px;">
+					Nous avons rencontré des difficultés à correctement modifier les labels, ne nous rendant compte qu'après l'entrainement du modèle des
+					problèmes de décalages des bounding box par rapport à l'emplacement réel des visages et entraînant une à deux séances de traquage du bug. ​
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/training/label_decale.jpg" width="80%">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;text-align:center;">
+					<i>
+						Exemple de labels décalés​
+					</i>​
+				</p>
+				<div class="overview">
+					<img class="img-fluid" src="../static/img/training/label_correction.jpg" width="80%">
+				</div>
+				<p style="font-family:sans-serif;font-size:20px;text-align:center;">
+					<i>
+						Exemple de labels corrigés
+					</i>​
+				</p>
+			</div>
+		</div>
+	</div>
+    
+
+
+    <!-- 	footer -->
+	<div class="footer">
+		<div class="container-fluid">
+			<div class="row">
+        <div class="col-sm-12 col-md-3 logo">
+              <img class="img-fluid" src="https://www.frenchtechbordeaux.com/wp-content/uploads/2020/03/LOGO_YNOV.png" />
+          </div>
+          <div class="col-sm-12 col-md-9 links">
+              <a href="" class="active">Home</a>
+              <a href="theory">Théorie</a>
+              <a href="training">Entrainement</a>
+              <a href="demo">Démonstrateur</a>
+              <a href="video_feed">Webcam Detection</a>
+              <a href="image">Image Detection</a>
+          </div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 offset-md-4 copyright">
+					© Copyright <script></script>, Ynov Theme. All rights are reserved.
+				</div>
+			</div>
+		</div>
+	</div>	
+		
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>
